@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="adress">Adress</label>
+                        <label for="address">Adress</label>
                         <input type="text" placeholder="Your address" class="form-control" name="address" id="address" autocapitalize="none"/>
                     </div>
 

@@ -10,6 +10,7 @@ class CustomUserDetails extends GrailsUser {
     final String fullname
     final String address
 
+
     CustomUserDetails(String username, String password, boolean enabled,
                       boolean accountNonExpired, boolean credentialsNonExpired,
                       boolean accountNonLocked,
