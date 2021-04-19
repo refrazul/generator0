@@ -3,9 +3,6 @@ package org.palina.security
 import grails.validation.ValidationException
 import grails.gorm.transactions.Transactional
 import grails.plugin.springsecurity.annotation.Secured
-import org.palina.security.User
-import org.palina.security.Role
-import org.palina.security.UserRole
 
 @Transactional
 @Secured('permitAll')
@@ -21,8 +18,10 @@ class RegisterController {
             redirect action: "index"
             return
         } else {
+            println "Creando usuario"
             try {
-                def user = User.findByUsername(params.username)?: new User(username: params.username, password: params.password, fullname: params.fullname).save()
+                println params
+                def user = UserApp.findByUsername(params.username)?: new UserApp(username: params.username, password: params.password, fullname: params.fullname, address: params.address).save()
                 def role = Role.get(params.role.id)
                 if(user && role) {
                     UserRole.create user, role
@@ -40,6 +39,7 @@ class RegisterController {
                     return
                 }
             } catch (ValidationException e) {
+                println e
                 flash.message = "Register Failed"
                 redirect action: "index"
                 return
